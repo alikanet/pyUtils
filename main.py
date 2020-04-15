@@ -2,7 +2,7 @@ import sys
 import os
 import json
 import argparse
-import app_menu
+import menu as app_menu
 import shell
 from PyQt5 import QtGui, QtWidgets
 
