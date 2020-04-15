@@ -7,12 +7,12 @@ data = {
 		{
 			"label": 'Dev',
 			"type": "submenu",
-			"icon": "icons/sun.png",
+			"icon": "icons/sun-2-128.png",
 			"menu":
 			[
 				{
 					"label": "Case Converter",
-					"icon": "icons/lock-64.png",
+					"icon": "icons/lock-128.png",
 					# "trigger": lambda: shell.exec('defaults write com.apple.finder CreateDesktop -bool false; killall Finder')
 						# win.webContents.send('genGuid', { x: 470, y: 400, url: '/index.html#/case' });
 				},
@@ -40,7 +40,7 @@ data = {
 		{
 			"label": "Dock",
 			"type": "submenu",
-			"icon": "icons/search",
+			"icon": "icons/brain-128",
 			"menu": [
 				{
 					"label": "Add Spacer",
@@ -112,7 +112,7 @@ data = {
 		{
 			"label": "General System",
 			"type": "submenu",
-			"icon": "icons/globe.png",
+			"icon": "icons/globe-4-128.png",
 			"menu": [
 				{
 					"label": "Show/Hide Hidden Files",
@@ -131,7 +131,7 @@ data = {
 		{
 			"label": "Spotlight",
 			"type": "submenu",
-			"icon": "icons/error.png",
+			"icon": "icons/error-4-128.png",
 			"menu": [
 				{
 					"label": "Indexing On/Off",

@@ -92,6 +92,7 @@ def main():
 		print(startText)
 
 
+
 	app = QtWidgets.QApplication(sys.argv)
 	w = QtWidgets.QWidget()
 	tray_icon = SystemTrayIcon(QtGui.QIcon(appIcon), w)
