@@ -137,17 +137,15 @@ data = {
 					"label": "Indexing On/Off",
 					"type": "checkbox",
 					"param": "Indexing",
-					"trigger": lambda: shell.exec('echo {{password}} | sudo -S mdutil -a -i {{bIndexing}} == false ? "off" : "on"}')
+					"trigger": lambda: shell.exec('echo {{pw}} | sudo -S mdutil -a -i {{bIndexing}} == false ? "off" : "on"}')
 				},
 				{
 					"label": "Re-Index Everything",
-					"param": "Indexing",
-					"trigger": lambda: shell.exec('ehcho {{password}} | sudo -S mdutil -aE')
+					"trigger": lambda: shell.exec('ehcho {{pw}} | sudo -S mdutil -aE')
 				},
 				{
 					"label": "Remove the Index",
-					"param": "Indexing",
-					"trigger": lambda: shell.exec('ehcho {{password}} | sudo -S rm -rfv /.Spotlight-V100')
+					"trigger": lambda: shell.exec('ehcho {{pw}} | sudo -S rm -rfv /.Spotlight-V100')
 				}
 			]
 		},

@@ -13,6 +13,10 @@ def exec(cmd):
 	startIndex = startIndex + 2 if startIndex != -1 else startIndex
 	if startIndex != -1 and endIndex != -1:
 		exVal = cmd[startIndex:endIndex]
+		print(f'option: {options["password"]} - exVal: {exVal}')
+		if exVal == "pw":
+			pw = showPWDialog()
+			cmd = cmd.replace("{{pw}}", pw)
 		if exVal in options:
 			optVal = not options[exVal]
 			cmd = cmd.replace("{{"+exVal+"}}", str(optVal).lower())
@@ -29,7 +33,7 @@ def exec(cmd):
 """
 Show Password Dialog and return Password
 """
-def showPWDialog(self):
+def showPWDialog():
 	dialog = QtWidgets.QDialog()
 	ui = Ui_Password()
 	ui.setupUi(dialog)
