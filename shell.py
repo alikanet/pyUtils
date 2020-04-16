@@ -1,6 +1,8 @@
 import os
 import pickle
 import sys
+from pwDialog import Ui_Password
+from PyQt5 import QtWidgets
 
 options = { 'RecentItems': False, 'ActiveApp': False, 'SingleApp': False, 'HiddenApp': False, 'HiddenFiles': False, 'DesktopIcon': False, 'Indexing': True }
 
@@ -19,6 +21,25 @@ def exec(cmd):
 
 	print(f'got cmd: {cmd}')
 	os.system(cmd)
+
+	# if args.quit:
+	# 	tray_icon.showPWDialog()
+
+
+"""
+Show Password Dialog and return Password
+"""
+def showPWDialog(self):
+	dialog = QtWidgets.QDialog()
+	ui = Ui_Password()
+	ui.setupUi(dialog)
+	dialog.show()
+	resp = dialog.exec_()
+
+	if resp == QtWidgets.QDialog.Accepted:
+		return ui.getPassword()
+	else:
+		return ''
 
 
 def init():

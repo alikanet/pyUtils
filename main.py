@@ -92,13 +92,13 @@ def main():
 		print(startText)
 
 
-
 	app = QtWidgets.QApplication(sys.argv)
 	w = QtWidgets.QWidget()
 	tray_icon = SystemTrayIcon(QtGui.QIcon(appIcon), w)
 	tray_icon.show()
 	tray_icon.showMessage('VFX Pipeline', 'Hello "Name of logged in ID')
 	sys.exit(app.exec_())
+
 
 """
 Check if this is being import or not
