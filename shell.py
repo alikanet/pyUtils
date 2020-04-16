@@ -1,23 +1,25 @@
 import os
 import pickle
 import sys
+from stringUtils import findAll, getParams
 from pwDialog import Ui_Password
 from PyQt5 import QtWidgets
 
 options = { 'RecentItems': False, 'ActiveApp': False, 'SingleApp': False, 'HiddenApp': False, 'HiddenFiles': False, 'DesktopIcon': False, 'Indexing': True }
 
 def exec(cmd):
-	startIndex = cmd.find("{{")
-	endIndex = cmd.find("}}")
+	# startIndex = cmd.find("{{")
+	# endIndex = cmd.find("}}")
 
-	startIndex = startIndex + 2 if startIndex != -1 else startIndex
-	if startIndex != -1 and endIndex != -1:
-		exVal = cmd[startIndex:endIndex]
-		print(f'option: {options["password"]} - exVal: {exVal}')
+	allStart = getParams(cmd)
+	print(f'all params: {allStart}')
+	for exVal in allStart:
+		print(f'param got: {exVal}')
 		if exVal == "pw":
+			print('yes pw found')
 			pw = showPWDialog()
 			cmd = cmd.replace("{{pw}}", pw)
-		if exVal in options:
+		elif exVal in options:
 			optVal = not options[exVal]
 			cmd = cmd.replace("{{"+exVal+"}}", str(optVal).lower())
 			options[exVal] = optVal

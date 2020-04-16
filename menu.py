@@ -137,7 +137,7 @@ data = {
 					"label": "Indexing On/Off",
 					"type": "checkbox",
 					"param": "Indexing",
-					"trigger": lambda: shell.exec('echo {{pw}} | sudo -S mdutil -a -i {{bIndexing}} == false ? "off" : "on"}')
+					"trigger": lambda: shell.exec('echo {{pw}} | sudo -S mdutil -a -i {{Indexing}} == false ? "off" : "on"}')
 				},
 				{
 					"label": "Re-Index Everything",
