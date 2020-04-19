@@ -13,27 +13,22 @@ data = {
 				{
 					"label": "Case Converter",
 					"icon": "icons/lock-128.png",
-					# "trigger": lambda: shell.exec('defaults write com.apple.finder CreateDesktop -bool false; killall Finder')
-						# win.webContents.send('genGuid', { x: 470, y: 400, url: '/index.html#/case' });
+					"trigger": lambda: shell.showCaseDialog()
 				},
 				{
 					"label": "Guid Generator",
-					"type": "checked"
-					# "trigger": "lambda: self.send_command('defaults write com.apple.finder CreateDesktop -bool true; killall Finder')"
-						# win.webContents.send('genGuid', { x: 470, y: 290, url: '/index.html#/guid' });
+					"type": "checked",
+					"trigger": lambda: shell.showGuidDialog()
 				},
 				{
 					"label": "Encryption",
-					"type": "checked"
-					# "trigger": "lambda: shell"trigger": lambda: shell.exec('defaults write com.apple.finder CreateDesktop -bool true; killall Finder')"
-						# win.webContents.send('genGuid', { x: 470, y: 290, url: '/index.html#/encrypt' });
-						# //						win.webContents.send('genGuid', '/index.html/#/guid');
+					"type": "checked",
+					"trigger": shell.showCaseDialog()
 				},
 				{
 					"label": "I am done",
-					"shortcut": "Command+Q"
-					# "trigger": "lambda: sys.exit()"
-				# app.quit();n.webContents.send('genGuid', {x: 470, y: 290, url: '/index.html/#guid'});
+					"shortcut": "Command+Q",
+					"trigger": lambda: shell.showPWDialog()
 				}
 			]
 		},
@@ -155,7 +150,7 @@ data = {
 		{
 			"label": "Exit",
 			"shortcut": "Command+Q",
-			"trigger": lambda: sys.exit()
+			"trigger": lambda: shell.exitApp()
 		}
 	]
 }

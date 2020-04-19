@@ -3,6 +3,8 @@ import pickle
 import sys
 from stringUtils import findAll, getParams
 from pwDialog import Ui_Password
+from guidDialog import Ui_Dialog
+from caseDialog import Ui_dlgCase
 from PyQt5 import QtWidgets
 
 options = { 'RecentItems': False, 'ActiveApp': False, 'SingleApp': False, 'HiddenApp': False, 'HiddenFiles': False, 'DesktopIcon': False, 'Indexing': True }
@@ -30,6 +32,34 @@ def exec(cmd):
 
 	# if args.quit:
 	# 	tray_icon.showPWDialog()
+
+def exitApp():
+	sys.exit()
+
+"""
+Show Password Dialog and return Password
+"""
+def showGuidDialog():
+	gdialog = QtWidgets.QDialog()
+	gui = Ui_Dialog()
+	gui.setupUi(gdialog)
+	gdialog.show()
+	resp = gdialog.exec_()
+
+	return resp
+
+
+"""
+Show Password Dialog and return Password
+"""
+def showCaseDialog():
+	cdialog = QtWidgets.QDialog()
+	cui = Ui_dlgCase()
+	cui.setupUi(cdialog)
+	cdialog.show()
+	resp = cdialog.exec_()
+
+	return resp
 
 
 """
