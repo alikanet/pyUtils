@@ -92,7 +92,9 @@ def main():
 		print(startText)
 
 	app = QtWidgets.QApplication(sys.argv)
+	app.setQuitOnLastWindowClosed(False)
 	w = QtWidgets.QWidget()
+	shell.parent = w
 	tray_icon = SystemTrayIcon(QtGui.QIcon(appIcon), w)
 	tray_icon.show()
 	tray_icon.showMessage('VFX Pipeline', 'Hello "Name of logged in ID')

@@ -7,7 +7,8 @@ from guidDialog import Ui_Dialog
 from caseDialog import Ui_dlgCase
 from PyQt5 import QtWidgets
 
-options = { 'RecentItems': False, 'ActiveApp': False, 'SingleApp': False, 'HiddenApp': False, 'HiddenFiles': False, 'DesktopIcon': False, 'Indexing': True }
+options = {'RecentItems': False, 'ActiveApp': False, 'SingleApp': False, 'HiddenApp': False, 'HiddenFiles': False, 'DesktopIcon': False, 'Indexing': True}
+parent = None
 
 def exec(cmd):
 	# startIndex = cmd.find("{{")
@@ -40,6 +41,7 @@ def exec(cmd):
 Show Password Dialog and return Password
 """
 def showGuidDialog():
+	print(parent)
 	gdialog = QtWidgets.QDialog()
 	gui = Ui_Dialog()
 	gui.setupUi(gdialog)
