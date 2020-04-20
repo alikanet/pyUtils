@@ -33,12 +33,12 @@ class Ui_dlgCase(object):
 		print('yeah baby')
 
 
-if __name__ == "__main__":
-	import sys
-	app = QtWidgets.QApplication(sys.argv)
-	dlgCase = QtWidgets.QDialog()
-	ui = Ui_dlgCase()
-	ui.setupUi(dlgCase)
-	dlgCase.show()
-	sys.exit(app.exec_())
+# if __name__ == "__main__":
+	# import sys
+	# app = QtWidgets.QApplication(sys.argv)
+	# dlgCase = QtWidgets.QDialog()
+	# ui = Ui_dlgCase()
+	# ui.setupUi(dlgCase)
+	# dlgCase.show()
+	# sys.exit(app.exec_())
 

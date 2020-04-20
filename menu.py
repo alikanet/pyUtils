@@ -23,7 +23,7 @@ data = {
 				{
 					"label": "Encryption",
 					"type": "checked",
-					"trigger": shell.showCaseDialog()
+					"trigger": lambda: shell.showCaseDialog()
 				},
 				{
 					"label": "I am done",
@@ -150,7 +150,7 @@ data = {
 		{
 			"label": "Exit",
 			"shortcut": "Command+Q",
-			"trigger": lambda: shell.exitApp()
+			"trigger": lambda: sys.exit()
 		}
 	]
 }

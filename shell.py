@@ -33,8 +33,8 @@ def exec(cmd):
 	# if args.quit:
 	# 	tray_icon.showPWDialog()
 
-def exitApp():
-	sys.exit()
+# def exitApp():
+# 	sys.exit()
 
 """
 Show Password Dialog and return Password

@@ -80,7 +80,7 @@ def main():
 	my_parser.add_argument('-i', '--icon', metavar='icon', type=str, help='Sets the app icon')
 
 	args = my_parser.parse_args()
-	appIcon = 'icon.png'
+	appIcon = 'icons/indian-rupee-128.png'
 
 	if args.icon != None:
 		appIcon = args.icon
