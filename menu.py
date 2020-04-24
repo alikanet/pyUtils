@@ -17,16 +17,16 @@ data = {
 				},
 				{
 					"label": "Guid Generator",
-					"type": "checked",
+					# "type": "checked",
 					"trigger": lambda: shell.showGuidDialog()
 				},
 				{
 					"label": "Encryption",
-					"type": "checked",
+					# "type": "checked",
 					"trigger": lambda: shell.showCaseDialog()
 				},
 				{
-					"label": "I am done",
+					"label": "Time Convert",
 					"shortcut": "Command+Q",
 					"trigger": lambda: shell.showPWDialog()
 				}
