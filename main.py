@@ -1,10 +1,9 @@
-import sys
-import os
-import json
-import argparse
+import sys, os, json, argparse
 import menu as app_menu
 import shell
 from PyQt5 import QtGui, QtWidgets
+#  QApplication
+# from PyQt5.Qt import QClipboard
 
 class SystemTrayIcon(QtWidgets.QSystemTrayIcon):
 	"""
@@ -24,8 +23,20 @@ class SystemTrayIcon(QtWidgets.QSystemTrayIcon):
 		self.setContextMenu(menu)
 		self.activated.connect(self.onTrayIconActivated)
 
+		# clipbrd.dataChanged.connect(self.clipboardChanged)
+
 		# if args.quit:
 		# 	sys.exit()
+
+    # Get the system clipboard contents
+	"""
+	When try icon gets activated 
+	"""
+	def clipboardChanged(self):
+		text = QtWidgets.QApplication.clipboard().text()
+		print(text)
+		# self.b.insertPlainText(text + '\n')
+
 
 	"""
 	When try icon gets activated 
@@ -93,9 +104,11 @@ def main():
 
 	app = QtWidgets.QApplication(sys.argv)
 	app.setQuitOnLastWindowClosed(False)
+	# clipboard = app.clipboard()
 	w = QtWidgets.QWidget()
 	shell.parent = w
 	tray_icon = SystemTrayIcon(QtGui.QIcon(appIcon), w)
+	# clipboard.dataChanged.connect(tray_icon.clipboardChanged)
 	tray_icon.show()
 	tray_icon.showMessage('VFX Pipeline', 'Hello "Name of logged in ID')
 	sys.exit(app.exec_())
