@@ -54,7 +54,7 @@ def ClipMonToggle(data):
 	print(cmd)
 
 	if cmd:
-		watcher.run()
+		watcher.start()
 	else:
 		watcher.stop()
 
