@@ -17,12 +17,12 @@ def getParams(source):
 	endIndex = findAll(source, "}}")
 
 	for start, end in zip(startIndex, endIndex):
-		print(f'set: start={start} end={end}')
+		# print(f'set: start={start} end={end}')
 
 		start = start + 2 if start != -1 else start
 		if start != -1 and endIndex != -1:
 			exVal = source[start:end]
-			print(f'param found: {exVal}')
+			# print(f'param found: {exVal}')
 			retList.append(exVal)
 
 	return retList

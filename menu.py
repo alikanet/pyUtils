@@ -147,10 +147,10 @@ data = {
 		{
 			"label": "Clipboard",
 			"type": "submenu",
-			"icon": "icons/error-4-128.png",
+			"icon": "icons/cloud-upload-128.png",
 			"menu": [
 				{
-					"label": "Indexing On/Off",
+					"label": "Monitoring On/Off",
 					"type": "checkbox",
 					"param": "ClipMon",
 					"trigger": lambda: shell.ClipMonToggle('{{ClipMon}}')

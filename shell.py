@@ -15,11 +15,11 @@ Show Password Dialog and return Password
 """
 def convertParam(cmd):
 	allStart = getParams(cmd)
-	print(f'all params: {allStart}')
+	# print(f'all params: {allStart}')
 	for exVal in allStart:
-		print(f'param got: {exVal}')
+		# print(f'param got: {exVal}')
 		if exVal == "pw":
-			print('yes pw found')
+			# print('yes pw found')
 			pw = showPWDialog()
 			cmd = cmd.replace("{{pw}}", pw)
 		elif exVal in options:
@@ -50,12 +50,15 @@ def exec(cmd):
 Show Password Dialog and return Password
 """
 def ClipMonToggle(data):
+	print(f'Data: {data}')
 	cmd = convertParam(data)
-	print(cmd)
+	print(f'Cmd: {cmd}')
 
-	if cmd:
+	if cmd == 'true':
+		print('start watcher')
 		watcher.start()
 	else:
+		print('stop watcher')
 		watcher.stop()
 
 
@@ -63,6 +66,7 @@ def ClipMonToggle(data):
 """
 Show Password Dialog and return Password
 """
+
 def onClipboardChange(data):
 	print(data)
 
@@ -151,9 +155,14 @@ def showPWDialog():
 
 
 def init():
-	with open("menu_data", "rb") as pickle_in:
-		options = pickle.load(pickle_in)
+	options = ''
 
+	try:
+		with open("menu_data", "rb") as pickle_in:
+			options = pickle.load(pickle_in)
+	except (OSError, IOError) as e:
+		print(e)
+		save()
 	
 	print(f'options 2: {options}')
 	return options
