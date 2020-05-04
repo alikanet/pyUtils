@@ -1,4 +1,4 @@
-import os, sys, pickle
+import os, sys, pickle, pyperclip
 from clipman import ClipboardWatcher
 from stringUtils import findAll, getParams
 from pwDialog import Ui_Password
@@ -6,9 +6,6 @@ from guidDialog import Ui_Dialog
 from caseDialog import Ui_dlgCase
 from settingsDialog import Ui_SettingsDialog
 from PyQt5 import QtWidgets
-
-options = {'RecentItems': False, 'ActiveApp': False, 'SingleApp': False, 'HiddenApp': False, 'HiddenFiles': False, 'DesktopIcon': False, 'Indexing': True, 'ClipMon': False}
-parent = None
 
 """
 Show Password Dialog and return Password
@@ -56,11 +53,10 @@ def ClipMonToggle(data):
 
 	if cmd == 'true':
 		print('start watcher')
-		watcher.start()
+		startClipboardMonitor()
 	else:
 		print('stop watcher')
-		watcher.stop()
-
+		stopClipboardMonitor()
 
 
 """
@@ -68,41 +64,39 @@ Show Password Dialog and return Password
 """
 
 def onClipboardChange(data):
-	print(data)
+
+	if options['ClipMonData']['isFirst'] == True:
+		options['ClipMonData']['isFirst'] = False
+	else:
+		options['ClipMonData']['items'].append(f'{data} \n')
+		print(data)
+
+	save()
 
 """
 Show Password Dialog and return Password
 """
-# def startClipboardMonitor():
-	# watcher = ClipboardWatcher(is_url_but_not_bitly, print_to_stdout, 5.)
-	# watcher.start()
-	# while True:
-		# try:
-		# 	print("Waiting for changed clipboard...")
-		# 	time.sleep(10)
-		# except KeyboardInterrupt:
-		# 	watcher.stop()
-		# 	break
+def startClipboardMonitor():
+	if options['ClipMonData']['isFirst'] == False:
+		options['ClipMonData']['isFirst'] = True
+
+	options['ClipMonData']['items'].clear()
+	save()
+	watcher.start()
+
 
 """
 Show Password Dialog and return Password
 """
-# def stopClipboardMonitor():
-	# watcher = ClipboardWatcher(is_url_but_not_bitly, print_to_stdout, 5.)
-	# watcher.start()
-	# while True:
-	# 	try:
-	# 		print("Waiting for changed clipboard...")
-	# 		time.sleep(10)
-	# 	except KeyboardInterrupt:
-	# 		break
-	# watcher.stop()
+def stopClipboardMonitor():
+	watcher.stop()
+	pyperclip.copy(''.join(options['ClipMonData']['items']))
+
 
 """
 Show Password Dialog and return Password
 """
 def showSettingsDialog():
-	print(parent)
 	gdialog = QtWidgets.QDialog()
 	gui = Ui_SettingsDialog()
 	gui.setupUi(gdialog)
@@ -115,7 +109,6 @@ def showSettingsDialog():
 Show Password Dialog and return Password
 """
 def showGuidDialog():
-	print(parent)
 	gdialog = QtWidgets.QDialog()
 	gui = Ui_Dialog()
 	gui.setupUi(gdialog)
@@ -164,7 +157,9 @@ def init():
 		print(e)
 		save()
 	
-	print(f'options 2: {options}')
+
+	
+	print(f'options 1: {options}')
 	return options
 
 
@@ -172,5 +167,7 @@ def save():
 	with open("menu_data", "wb") as pickle_out:
 		pickle.dump(options, pickle_out)
 
+options = {'RecentItems': False, 'ActiveApp': False, 'SingleApp': False, 'HiddenApp': False, 'HiddenFiles': False, 'DesktopIcon': False, 'Indexing': True, 'ClipMon': False, 'ClipMonData': {'isFirst': True, 'items': []}}
 watcher = ClipboardWatcher(onClipboardChange, 5.)
 options = init()
+print(f'options 2: {options}')
