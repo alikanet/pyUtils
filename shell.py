@@ -146,6 +146,12 @@ def showPWDialog():
 	else:
 		return ''
 
+"""
+Show Password Dialog and return Password
+"""
+def emptyGuid():
+	pyperclip.copy('00000000-0000-0000-0000-000000000000')
+
 
 def init():
 	options = ''
@@ -156,9 +162,7 @@ def init():
 	except (OSError, IOError) as e:
 		print(e)
 		save()
-	
-
-	
+		
 	print(f'options 1: {options}')
 	return options
 

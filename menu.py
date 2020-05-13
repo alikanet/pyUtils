@@ -21,6 +21,11 @@ data = {
 					"trigger": lambda: shell.showGuidDialog()
 				},
 				{
+					"label": "Empty Guid",
+					# "type": "checked",
+					"trigger": lambda: shell.emptyGuid()
+				},
+				{
 					"label": "Encryption",
 					# "type": "checked",
 					"trigger": lambda: shell.showCaseDialog()
