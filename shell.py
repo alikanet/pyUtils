@@ -4,6 +4,7 @@ from stringUtils import findAll, getParams
 from pwDialog import Ui_Password
 from guidDialog import Ui_Dialog
 from caseDialog import Ui_dlgCase
+from encryptDialog import Ui_encryptDlg
 from settingsDialog import Ui_SettingsDialog
 from PyQt5 import QtWidgets
 
@@ -104,6 +105,19 @@ def showSettingsDialog():
 	resp = gdialog.exec_()
 
 	return resp
+
+"""
+Show Password Dialog and return Password
+"""
+def showEncryptDialog():
+	edialog = QtWidgets.QDialog()
+	eui = Ui_encryptDlg()
+	eui.setupUi(edialog)
+	edialog.show()
+	resp = edialog.exec_()
+
+	return resp
+
 
 """
 Show Password Dialog and return Password

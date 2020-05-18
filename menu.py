@@ -12,7 +12,6 @@ data = {
 			[
 				{
 					"label": "Case Converter",
-					"icon": "icons/lock-128.png",
 					"trigger": lambda: shell.showCaseDialog()
 				},
 				{
@@ -28,7 +27,7 @@ data = {
 				{
 					"label": "Encryption",
 					# "type": "checked",
-					"trigger": lambda: shell.showCaseDialog()
+					"trigger": lambda: shell.showEncryptDialog()
 				},
 				{
 					"label": "Time Convert",
